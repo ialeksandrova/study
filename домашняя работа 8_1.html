@@ -1,0 +1,80 @@
+<html>
+     <body>
+            <script>
+let M = +prompt('Задайте количество столбцов от 1 до 10 ');
+let N = 2 * M;
+let array_A = [];
+let array_B = [];
+let array_B1 = []; 
+if (isFinite(M)){
+     function show_the_array(array_A){
+        console.log(array_A);
+        }       
+        for (let i=0; i< N ; i++){
+                array_A[i] = [];
+            for (let j = 0; j < M; j++)
+                array_A[i][j] = Math.round(1 +(5-0) * Math.random());
+            }
+        show_the_array(array_A);
+
+        let array_A1 = [];// верхняя половина
+        let array_A2 = [];// нижняя половина
+        let S = N / 2;
+        for(i = 0; i < S; i++){
+            array_A1[i] = array_A[i];
+            array_A2[i] = array_A[i + (N - S)];
+        }   
+    show_the_array(array_A1);
+    show_the_array(array_A2);
+        
+        let product1 = 1;
+        let product2 = 1;
+        for(let i=0; i < M ; i++){
+        for (let j = 0; j < M; j++){
+            product1 *= array_A1[i][j];
+            product2 *= array_A2[i][j];
+            }
+        }
+        console.log(product1);
+        console.log(product2);
+
+        if(product1 > product2){
+            document.write('Произведение элементов в верхней части больше произведения элементов в нижней части');
+        }else if(product1 < product2){
+            document.write('Произведение элементов в верхней части меньше произведения элементов в нижней части');
+        }else{
+            document.write('Произведения элементов в верхней и нижней части равны');
+        }
+
+    for(i=0; i< M ; i++){
+        array_B[i] = [];
+    for (j = 0; j < M; j++){
+        array_B[i][j] = array_A1[i][j] * array_A2[i][j];
+        }
+    }
+    show_the_array(array_B);
+
+    for(i = 0; i < M; i++){
+        array_B1[i] = [];
+    for(j = 0; j < M; j++){
+        array_B1[i][j] = array_B[i][j];
+        }
+    }
+    for(let k = 0; k < M; k++){
+        for(i = 0; i < M; i++){
+            for(j = 0; j < M; j++){;
+                if(array_B1[i][j] > array_B1[i][j+1]){
+                let g = array_B1[i][j];
+                array_B1[i][j] = array_B1[i][j + 1];
+                array_B1[i][j+1] = g;
+                 }
+            }
+        }
+    }
+    show_the_array(array_B1) 
+}else
+alert('Пожалуйста, обновите страницу и введите корректные данные');
+
+</script>
+</body>
+</html>
