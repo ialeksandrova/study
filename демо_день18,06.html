@@ -1,0 +1,82 @@
+<html>
+     <body>
+         <title> Демо_день 18.06.2022</title>
+            <script>
+                
+let M = (+prompt('Задайте количество столбцов от 1 до 10 '));
+let N = 2 * M;
+let A = [];
+let B = [];
+let B1 = []; 
+
+if (isFinite(M)){
+   
+for(let i=0; i< N ; i++){
+    A[i] = [];
+    for (let j = 0; j < M; j++){
+        A[i][j] = Math.round(1 +(5-0) * Math.random());
+    }
+}
+console.log(A);
+
+let A1 = [];// верхняя половина
+let A2 = [];// нижняя половина
+let S = N / 2;
+for(i = 0; i < S; i++){
+    A1[i] = A[i];
+    A2[i] = A[i + (N - S)];
+}
+console.log(A1);
+console.log(A2);
+
+let product1 = 1;
+let product2 = 1;
+for(let i=0; i < M ; i++){
+    for (let j = 0; j < M; j++){
+        product1 *= A1[i][j];
+        product2 *= A2[i][j];
+    }
+}
+console.log(product1);
+console.log(product2);
+
+if(product1 > product2){
+    document.write('Произведение элементов в верхней части больше произведения элементов в нижней части');
+}else if(product1 < product2){
+document.write('Произведение элементов в верхней части меньше произведения элементов в нижней части');
+}else{
+    document.write('Произведения элементов в верхней и нижней части равны');
+}
+
+for(i=0; i< M ; i++){
+    B[i] = [];
+    for (j = 0; j < M; j++){
+        B[i][j] = A1[i][j] * A2[i][j];
+    }
+}
+console.log(B);
+
+for(i = 0; i < M; i++){
+    B1[i] = [];
+    for(j = 0; j < M; j++){
+        B1[i][j] = B[i][j];
+    }
+}
+for(let k = 0; k < M; k++){
+    for(i = 0; i < M; i++){
+        for(j = 0; j < M; j++){;
+            if(B1[i][j] > B1[i][j+1]){
+        let g = B1[i][j];
+        B1[i][j] = B1[i][j + 1];
+        B1[i][j+1] = g;
+            }
+        }
+    }
+}
+console.log(B1);  
+}else
+alert('Пожалуйста, обновите страницу и введите корректные данные');
+
+</script>
+</body>
+</html>
